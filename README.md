@@ -32,7 +32,7 @@ print(f'{fg("#0000ff")}ForeGround')
 ```
 
 This will output:
-![ForeGround](/demo/ForeGroundBlue.png)
+![ForeGround](/demo/ForeGroundBlue.PNG)
 This will also work if you use a rgb value.
 
 Just put in ``fg((0, 0, 255))``, Changing the tuple to have the r, g and b value you want it to have.
@@ -48,7 +48,7 @@ from coloredterm import bg
 print(f"{bg('#00ff00')}BackGround")
 ```
 This will output:
-![BackGround](/demo/BackGroundGreen.png)
+![BackGround](/demo/BackGroundGreen.PNG)
 
 Same as in [ForeGround](#foreground) rgb values work by putting in a tuple.
 
@@ -84,7 +84,7 @@ print(Style.HIDDEN+"Hidden")
 ```
 
 Running this looks like: 
-![](/demo/Style.png)
+![](/demo/Style.PNG)
 
 ## Fore
 Now for the Fore function.
