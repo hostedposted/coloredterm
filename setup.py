@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="coloredterm",
-    version="0.0.1",
+    version="0.0.2",
     author="Hostedposted",
     author_email="hostedpostedsite@gmail.com",
     description="Color the text in your terminal.",
@@ -18,5 +18,6 @@ setuptools.setup(
         "Programming Language :: Python :: 3.8",
         "Operating System :: OS Independent",
     ],
+    install_requires=["Pillow==8.1.0"],
     python_requires='>=3.7',
 )
