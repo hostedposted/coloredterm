@@ -334,7 +334,7 @@ def RGB(r, g, b):
 
 def fg(color):
     """
-    Change foreground of terminal text
+    Change foreground of terminal
     """
     if isinstance(color, tuple):
         color = RGB(color[0], color[1], color[2])
@@ -349,7 +349,7 @@ def fg(color):
 
 def bg(color):
     """
-    Change background of terminal text
+    Change background of terminal
     """
     if isinstance(color, tuple):
         color = RGB(color[0], color[1], color[2])
