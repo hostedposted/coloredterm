@@ -6,6 +6,7 @@
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![Downloads](https://pepy.tech/badge/coloredterm)](https://pepy.tech/project/coloredterm)
+[![Documentation Status](https://readthedocs.org/projects/coloredterm/badge/?version=latest)](https://coloredterm.readthedocs.io/en/latest/?badge=latest)
 
 Coloredterm is a collection of functions to help you make text in your terminal a different color.
 
