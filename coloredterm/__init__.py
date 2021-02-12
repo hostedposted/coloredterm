@@ -442,4 +442,4 @@ def pattern_print(text, pattern, sep=None, end=None, file=None, flush=None):
 
 def pattern_input(text, pattern):
     pattern_print(text, pattern, end="")
-    input()
+    return input()
