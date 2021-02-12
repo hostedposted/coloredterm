@@ -1,3 +1,4 @@
+from __future__ import print_function
 from PIL import ImageColor
 import os, platform
 
@@ -365,34 +366,49 @@ class Style:
     """
     Collection of different styles
     """
-
-    ESC = "\x1b["
-    END = "m"
-
-    names = {
-        'BOLD': 1,
-        'DIM': 2,
-        'UNDERLINE': 4,
-        'BLINK': 5,
-        'REVERSE': 7,
-        'HIDDEN': 8,
-        'RESET': 0
-    }
-
-    for color, num in names.items():
-        vars()[color] = '{0}{1}{2}'.format(ESC, num, END)
+    BOLD = "\x1b[1m"
+    DIM = "\x1b[2m"
+    UNDERLINE = "\x1b[4m"
+    BLINK = "\x1b[5m"
+    REVERSE = "\x1b[7m"
+    HIDDEN = "\x1b[8m"
+    RESET = "\x1b[0m"
 
 class Fore:
-    ESC = '\x1b['
-    END = "m"
-    for ansi in names:
-        vars()[names[ansi]] = "{0}{1}{2}".format(ESC, ansi, END)
+    BLACK = "\x1b[30m"
+    RED = "\x1b[31m"
+    GREEN = "\x1b[32m"
+    YELLOW = "\x1b[33m"
+    BLUE = "\x1b[34m"
+    PURPLE = "\x1b[35m"
+    CYAN = "\x1b[36m"
+    WHITE = "\x1b[37m"
+    LIGHTBLACK_EX = "\x1b[90m"
+    LIGHTRED_EX = "\x1b[91m"
+    LIGHTGREEN_EX = "\x1b[92m"
+    LIGHTYELLOW_EX = "\x1b[93m"
+    LIGHTBLUE_EX = "\x1b[94m"
+    LIGHTMAGENTA_EX = "\x1b[95m"
+    LIGHTCYAN_EX = "\x1b[96m"
+    LIGHTWHITE_EX = "\x1b[97m"
 
 class Back:
-    ESC = '\x1b['
-    END = "m"
-    for ansi in names:
-        vars()[names[ansi]] = "{0}{1}{2}".format(ESC, int(ansi)+10, END)
+    BLACK = "\x1b[40m"
+    RED = "\x1b[41m"
+    GREEN = "\x1b[42m"
+    YELLOW = "\x1b[43m"
+    BLUE = "\x1b[44m"
+    PURPLE = "\x1b[45m"
+    CYAN = "\x1b[46m"
+    WHITE = "\x1b[47m"
+    LIGHTBLACK_EX = "\x1b[100m"
+    LIGHTRED_EX = "\x1b[101m"
+    LIGHTGREEN_EX = "\x1b[102m"
+    LIGHTYELLOW_EX = "\x1b[103m"
+    LIGHTBLUE_EX = "\x1b[104m"
+    LIGHTMAGENTA_EX = "\x1b[105m"
+    LIGHTCYAN_EX = "\x1b[106m"
+    LIGHTWHITE_EX = "\x1b[107m"
 
 def colored(text, color=None, on_color=None, style=None):
     if style == None:
@@ -400,13 +416,13 @@ def colored(text, color=None, on_color=None, style=None):
     else:
         style = style.upper()
     if color == None and on_color == None:
-        return text
+        return str(eval("Style.{0}".format(style)))+str(text)
     elif on_color == None:
-        return str(eval(f"Style.{style}+Fore.{color.upper()}"))+str(text)+str(Style.RESET)
+        return str(eval("Style.{0}+Fore.{1}".format(style, color.upper())))+str(text)+str(Style.RESET)
     elif color == None:
-        return str(eval(f"Style.{style}+Back.{on_color.upper()}"))+str(text)+str(Style.RESET)
+        return str(eval("Style.{0}+Back.{1}".format(style, on_color.upper())))+str(text)+str(Style.RESET)
     else:
-        return str(eval(f"Style.{style}+Back.{on_color.upper()}+Fore.{color.upper()}"))+str(text)+str(Style.RESET)
+        return str(eval("Style.{0}+Back.{1}+Fore.{2}".format(style, on_color.upper(), color.upper())))+str(text)+str(Style.RESET)
     
-def cprint(text, color=None, on_color=None, style=None, **kwargs):
-    print(colored(text, color, on_color, style), **kwargs)
+def cprint(text, color=None, on_color=None, style=None, sep=None, end=None, file=None, flush=None):
+    print(colored(text, color, on_color, style), sep=sep, end=end, file=file, flush=flush)
