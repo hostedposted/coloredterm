@@ -426,3 +426,16 @@ def colored(text, color=None, on_color=None, style=None):
     
 def cprint(text, color=None, on_color=None, style=None, sep=None, end=None, file=None, flush=None):
     print(colored(text, color, on_color, style), sep=sep, end=end, file=file, flush=flush)
+
+def pattern_print(text, pattern, **kwargs):
+    global next_in_pattern
+    try:
+        next_in_pattern
+    except NameError:
+        next_in_pattern = 0
+    try:
+        print(colored(text, pattern[next_in_pattern]), **kwargs)
+    except:
+        next_in_pattern = 0
+        print(colored(text, pattern[next_in_pattern]), **kwargs)
+    next_in_pattern += 1

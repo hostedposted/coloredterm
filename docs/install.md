@@ -2,7 +2,7 @@
 
 Installing coloredterm is very simple.
 
-All you need to install it is pip and python 2.7 or higher.
+All you need to have to install it is pip and python 2.7 or higher.
 
 If you do not have pip installed you can use this to install it:
 

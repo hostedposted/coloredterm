@@ -116,3 +116,13 @@ cprint(
     flush = None
 )
 ```
+
+## pattern_print Function
+``The Pattern_print function lets you print text with the next color from a pattern.``
+```py
+pattern_print(
+    text,
+    pattern,
+    **kwargs
+)
+```
