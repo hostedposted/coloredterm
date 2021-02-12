@@ -65,4 +65,4 @@ For more please go to the [documentation](https://coloredterm.readthedocs.io/en/
 [issues-shield]: https://img.shields.io/github/issues/hostedposted/coloredterm.svg?style=for-the-badge
 [issues-url]: https://github.com/hostedposted/coloredterm/issues
 [license-shield]: https://img.shields.io/github/license/hostedposted/coloredterm.svg?style=for-the-badge
-[license-url]: https://github.com/hostedposted/coloredterm/blob/master/LICENSE.txt
+[license-url]: https://github.com/hostedposted/coloredterm/blob/master/LICENSE

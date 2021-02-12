@@ -2,7 +2,7 @@
 
 This cookbook is a collection of demos of the coloredterm module.
 
-If you do not have it installed please go to the [installing page](en/latest/install.md).
+If you do not have it installed please go to the [installing page](install.md).
 
 # All foregrounds
 

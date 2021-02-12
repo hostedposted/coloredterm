@@ -427,15 +427,19 @@ def colored(text, color=None, on_color=None, style=None):
 def cprint(text, color=None, on_color=None, style=None, sep=None, end=None, file=None, flush=None):
     print(colored(text, color, on_color, style), sep=sep, end=end, file=file, flush=flush)
 
-def pattern_print(text, pattern, **kwargs):
+def pattern_print(text, pattern, sep=None, end=None, file=None, flush=None):
     global next_in_pattern
     try:
         next_in_pattern
     except NameError:
         next_in_pattern = 0
     try:
-        print(colored(text, pattern[next_in_pattern]), **kwargs)
+        print(colored(text, pattern[next_in_pattern]), sep=sep, end=end, file=file, flush=flush)
     except:
         next_in_pattern = 0
-        print(colored(text, pattern[next_in_pattern]), **kwargs)
+        print(colored(text, pattern[next_in_pattern]), sep=sep, end=end, file=file, flush=flush)
     next_in_pattern += 1
+
+def pattern_input(text, pattern):
+    pattern_print(text, pattern, end="")
+    input()
