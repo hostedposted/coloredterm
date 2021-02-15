@@ -56,7 +56,7 @@ Resetting the background after each print.
 This outputs:   
 ![](demo/All-BackGrounds.PNG)
 
-## ForeGrounds and there hex codes
+# ForeGrounds and there hex codes
 Here we will show a way you can find the hex code for all of the foregrounds.
 
 For this we will use the colors dictionary from coloredterm.
@@ -77,7 +77,7 @@ This will output:
 
 ![](demo/ForeGrounds-HexCodes.PNG)
 
-## Pattern Print
+# Pattern Print
 
 The pattern print function prints the next color in a pattern. So if we make a list of the patterns we want it to follow then it will start the pattern.
 
@@ -91,11 +91,9 @@ from coloredterm import pattern_print
 
 pattern = ["blue", "green", "yellow"]
 
-# Simplify so you do not need do put in the pattern variable.
-def pattern_p(text, **kwargs):
-    pattern_print(text, pattern, **kwargs)
+# Pattern is only required on the first print statement.
 
-pattern_p("Welcome", end=", ")
+pattern_p("Welcome", pattern ,end=", ")
 pattern_p("To The", end=" ")
 pattern_p("Demo", end="!")
 ```

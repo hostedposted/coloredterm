@@ -1,6 +1,6 @@
 from __future__ import print_function
 from PIL import ImageColor
-import os, platform
+import os, platform, random
 
 if platform.system().lower() == 'windows':
     os.system("color")
@@ -391,6 +391,7 @@ class Fore:
     LIGHTMAGENTA_EX = "\x1b[95m"
     LIGHTCYAN_EX = "\x1b[96m"
     LIGHTWHITE_EX = "\x1b[97m"
+    RESET = "\x1b[0m"
 
 class Back:
     BLACK = "\x1b[40m"
@@ -409,6 +410,7 @@ class Back:
     LIGHTMAGENTA_EX = "\x1b[105m"
     LIGHTCYAN_EX = "\x1b[106m"
     LIGHTWHITE_EX = "\x1b[107m"
+    RESET = "\x1b[0m"
 
 def colored(text, color=None, on_color=None, style=None):
     if style == None:
@@ -424,22 +426,38 @@ def colored(text, color=None, on_color=None, style=None):
     else:
         return str(eval("Style.{0}+Back.{1}+Fore.{2}".format(style, on_color.upper(), color.upper())))+str(text)+str(Style.RESET)
     
-def cprint(text, color=None, on_color=None, style=None, sep=None, end=None, file=None, flush=None):
-    print(colored(text, color, on_color, style), sep=sep, end=end, file=file, flush=flush)
+def cprint(text, color=None, on_color=None, style=None, end=None, file=None, flush=None):
+    print(colored(text, color, on_color, style), end=end, file=file, flush=flush)
 
-def pattern_print(text, pattern, sep=None, end=None, file=None, flush=None):
-    global next_in_pattern
+def pattern_print(text, pattern=["reset"], end=None, file=None, flush=None):
+    global next_in_pattern, pat
+    try:
+        # Disable used before assignment error for vscode.
+        # pylint: disable=used-before-assignment
+        pat
+        if pattern == ["reset"]:
+            pattern = pat
+        if pattern != pat:
+            pat = pattern
+    except:
+        pat = pattern
     try:
         next_in_pattern
     except NameError:
         next_in_pattern = 0
     try:
-        print(colored(text, pattern[next_in_pattern]), sep=sep, end=end, file=file, flush=flush)
+        print(colored(text, pattern[next_in_pattern]), end=end, file=file, flush=flush)
     except:
         next_in_pattern = 0
-        print(colored(text, pattern[next_in_pattern]), sep=sep, end=end, file=file, flush=flush)
+        print(colored(text, pattern[next_in_pattern]), end=end, file=file, flush=flush)
     next_in_pattern += 1
 
-def pattern_input(text, pattern):
+def pattern_input(text, pattern=["reset"]):
     pattern_print(text, pattern, end="")
     return input()
+
+def rand(text):
+    """
+    Randomly pick a color and make your text that color.
+    """
+    return colored(text, random.choice(list(names.values())))

@@ -110,7 +110,6 @@ cprint(
     color = None,
     on_color = None,
     style = None,
-    sep = None,
     end = None,
     file = None,
     flush = None
@@ -118,11 +117,30 @@ cprint(
 ```
 
 ## pattern_print Function
-``The Pattern_print function lets you print text with the next color from a pattern.``
+``The Pattern_print function lets you print text with the next color from a pattern. After the first print statement you do not need to specify pattern.``
 ```py
 pattern_print(
     text,
-    pattern,
-    **kwargs
+    pattern=["reset"],
+    end=None, 
+    file=None,
+    flush=None
+)
+```
+
+## pattern_input Function
+``The Pattern_input function lets the user input a statement with the text being colored. After the first input statement you do not need to specify pattern.``
+```py
+pattern_input(
+    text,
+    pattern=["reset"]
+)
+```
+
+## rand Function
+``The rand function randomly picks a color and applies it to the text given.``
+```py
+rand(
+    text
 )
 ```
