@@ -429,7 +429,7 @@ def colored(text, color=None, on_color=None, style=None):
 def cprint(text, color=None, on_color=None, style=None, end=None, file=None, flush=None):
     print(colored(text, color, on_color, style), end=end, file=file, flush=flush)
 
-def pattern_print(text, pattern=["reset"], end=None, file=None, flush=None):
+def pattern_print(text, pattern=["reset"], end=None, file=None):
     global next_in_pattern, pat
     try:
         # Disable used before assignment error for vscode.
@@ -446,10 +446,10 @@ def pattern_print(text, pattern=["reset"], end=None, file=None, flush=None):
     except NameError:
         next_in_pattern = 0
     try:
-        print(colored(text, pattern[next_in_pattern]), end=end, file=file, flush=flush)
+        print(colored(text, pattern[next_in_pattern]), end=end, file=file)
     except:
         next_in_pattern = 0
-        print(colored(text, pattern[next_in_pattern]), end=end, file=file, flush=flush)
+        print(colored(text, pattern[next_in_pattern]), end=end, file=file)
     next_in_pattern += 1
 
 def pattern_input(text, pattern=["reset"]):
@@ -461,3 +461,4 @@ def rand(text):
     Randomly pick a color and make your text that color.
     """
     return colored(text, random.choice(list(names.values())))
+

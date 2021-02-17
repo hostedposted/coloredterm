@@ -87,15 +87,13 @@ from coloredterm import pattern_print
 
 # The pattern_print function lets you print text with the color being the next one in the pattern.
 
-# Simplify so you do not need do put in the pattern variable.
-
 pattern = ["blue", "green", "yellow"]
 
 # Pattern is only required on the first print statement.
 
-pattern_p("Welcome", pattern ,end=", ")
-pattern_p("To The", end=" ")
-pattern_p("Demo", end="!")
+pattern_print("Welcome", pattern ,end=", ")
+pattern_print("To The", end=" ")
+pattern_print("Demo", end="!")
 ```
 
 This will output:
