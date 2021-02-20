@@ -1,6 +1,6 @@
 from __future__ import print_function
-from PIL import ImageColor
 import os, platform, random
+from PIL import ImageColor
 
 if platform.system().lower() == 'windows':
     os.system("color")
@@ -285,9 +285,7 @@ names = {
 
 
 def HEX(color):
-    """
-    Convert hex code to ansi escape code.
-    """
+    "Convert hex code to ansi escape code."
     for ansicolor, hexcolor in colors.items():
         if hexcolor == color:
             return ansicolor
@@ -309,9 +307,7 @@ def HEX(color):
     return nearest
 
 def RGB(r, g, b):
-    """
-    Convert rgb values to ansi escape code.
-    """
+    "Convert rgb values to ansi escape code."
     color = r, g, b
     for ansicolor, hexcolor in colors.items():
         if hexcolor == '#%02x%02x%02x' % color:
@@ -333,9 +329,7 @@ def RGB(r, g, b):
 
 
 def fg(color):
-    """
-    Change foreground of terminal
-    """
+    "Change foreground of terminal"
     if isinstance(color, tuple):
         color = RGB(color[0], color[1], color[2])
         return "\u001b[38;5;{0}m".format(color)
@@ -348,9 +342,7 @@ def fg(color):
         raise Exception("Invalid color")
 
 def bg(color):
-    """
-    Change background of terminal
-    """
+    "Change background of terminal"
     if isinstance(color, tuple):
         color = RGB(color[0], color[1], color[2])
         return "\u001b[48;5;{0}m".format(color)
@@ -363,9 +355,6 @@ def bg(color):
         raise Exception("Invalid color")
 
 class Style:
-    """
-    Collection of different styles
-    """
     BOLD = "\x1b[1m"
     DIM = "\x1b[2m"
     UNDERLINE = "\x1b[4m"
@@ -425,31 +414,27 @@ def colored(text, color=None, on_color=None, style=None):
         return str(eval("Style.{0}+Back.{1}".format(style, on_color.upper())))+str(text)+str(Style.RESET)
     else:
         return str(eval("Style.{0}+Back.{1}+Fore.{2}".format(style, on_color.upper(), color.upper())))+str(text)+str(Style.RESET)
-    
-def cprint(text, color=None, on_color=None, style=None, end=None, file=None, flush=None):
-    print(colored(text, color, on_color, style), end=end, file=file, flush=flush)
+def cprint(text, color=None, on_color=None, style=None, end=None):
+    print(colored(text, color, on_color, style), end=end)
 
-def pattern_print(text, pattern=["reset"], end=None, file=None):
+def pattern_print(text, pattern=["reset"], end=None):
     global next_in_pattern, pat
     try:
-        # Disable used before assignment error for vscode.
-        # pylint: disable=used-before-assignment
-        pat
         if pattern == ["reset"]:
             pattern = pat
         if pattern != pat:
             pat = pattern
-    except:
+    except NameError:
         pat = pattern
     try:
         next_in_pattern
     except NameError:
         next_in_pattern = 0
     try:
-        print(colored(text, pattern[next_in_pattern]), end=end, file=file)
-    except:
+        print(colored(text, pattern[next_in_pattern]), end=end)
+    except IndexError:
         next_in_pattern = 0
-        print(colored(text, pattern[next_in_pattern]), end=end, file=file)
+        print(colored(text, pattern[next_in_pattern]), end=end)
     next_in_pattern += 1
 
 def pattern_input(text, pattern=["reset"]):
@@ -457,8 +442,6 @@ def pattern_input(text, pattern=["reset"]):
     return input()
 
 def rand(text):
-    """
-    Randomly pick a color and make your text that color.
-    """
+    "Randomly pick a color and make your text that color."
     return colored(text, random.choice(list(names.values())))
 
