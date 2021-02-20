@@ -1,3 +1,4 @@
+"""Collection of tools for changing the text of your terminal."""
 from __future__ import print_function
 import os, platform, random
 from PIL import ImageColor
@@ -329,7 +330,7 @@ def RGB(r, g, b):
 
 
 def fg(color):
-    """Change foreground of terminal"""
+    """Change foreground of terminal."""
     if isinstance(color, tuple):
         color = RGB(color[0], color[1], color[2])
         return "\u001b[38;5;{0}m".format(color)
@@ -342,7 +343,7 @@ def fg(color):
         raise Exception("Invalid color")
 
 def bg(color):
-    """Change background of terminal"""
+    """Change background of terminal."""
     if isinstance(color, tuple):
         color = RGB(color[0], color[1], color[2])
         return "\u001b[48;5;{0}m".format(color)

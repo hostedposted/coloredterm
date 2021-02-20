@@ -122,9 +122,7 @@ cprint(
 pattern_print(
     text,
     pattern=["reset"],
-    end=None, 
-    file=None,
-    flush=None
+    end=None
 )
 ```
 
