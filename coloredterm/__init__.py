@@ -1,6 +1,6 @@
 """Collection of tools for changing the text of your terminal."""
 from __future__ import print_function
-import os, platform, random
+import os, platform, secrets
 from PIL import ImageColor
 
 if platform.system().lower() == 'windows':
@@ -444,5 +444,5 @@ def pattern_input(text, pattern=["reset"]):
 
 def rand(text):
     """Randomly pick a color and make your text that color."""
-    return colored(text, random.choice(list(names.values())))
+    return colored(text, secrets.choice(list(names.values())))
 

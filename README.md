@@ -12,15 +12,6 @@ Coloredterm is a collection of functions to help you make text in your terminal 
 
 With fg, bg, Fore, Back, Style, colored and cprint functions.
 
-<details>
-<summary>Table of contents</summary>
-
-- [Getting started](#getting-started)
-  - [Installing](#installing)
-  - [Usage](#usage)
-
-</details>
-
 # Getting started
 
 ## Installing
