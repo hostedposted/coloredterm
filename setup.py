@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="coloredterm",
-    version="0.1.1",
+    version="0.1.2",
     author="Hostedposted",
     author_email="hostedpostedsite@gmail.com",
     description="Color the text in your terminal.",

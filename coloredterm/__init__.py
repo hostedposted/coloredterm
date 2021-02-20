@@ -285,7 +285,7 @@ names = {
 
 
 def HEX(color):
-    "Convert hex code to ansi escape code."
+    """Convert hex code to ansi escape code."""
     for ansicolor, hexcolor in colors.items():
         if hexcolor == color:
             return ansicolor
@@ -307,7 +307,7 @@ def HEX(color):
     return nearest
 
 def RGB(r, g, b):
-    "Convert rgb values to ansi escape code."
+    """Convert rgb values to ansi escape code."""
     color = r, g, b
     for ansicolor, hexcolor in colors.items():
         if hexcolor == '#%02x%02x%02x' % color:
@@ -329,7 +329,7 @@ def RGB(r, g, b):
 
 
 def fg(color):
-    "Change foreground of terminal"
+    """Change foreground of terminal"""
     if isinstance(color, tuple):
         color = RGB(color[0], color[1], color[2])
         return "\u001b[38;5;{0}m".format(color)
@@ -342,7 +342,7 @@ def fg(color):
         raise Exception("Invalid color")
 
 def bg(color):
-    "Change background of terminal"
+    """Change background of terminal"""
     if isinstance(color, tuple):
         color = RGB(color[0], color[1], color[2])
         return "\u001b[48;5;{0}m".format(color)
@@ -442,6 +442,6 @@ def pattern_input(text, pattern=["reset"]):
     return input()
 
 def rand(text):
-    "Randomly pick a color and make your text that color."
+    """Randomly pick a color and make your text that color."""
     return colored(text, random.choice(list(names.values())))
 
