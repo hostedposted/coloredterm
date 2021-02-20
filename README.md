@@ -5,6 +5,7 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5f23efbac8a846b1b0ea32c1d007e0f0)](https://app.codacy.com/gh/hostedposted/coloredterm?utm_source=github.com&utm_medium=referral&utm_content=hostedposted/coloredterm&utm_campaign=Badge_Grade)
 [![Downloads](https://pepy.tech/badge/coloredterm)](https://pepy.tech/project/coloredterm)
 [![Documentation Status](https://readthedocs.org/projects/coloredterm/badge/?version=latest)](https://coloredterm.readthedocs.io/en/latest/?badge=latest)
 
