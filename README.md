@@ -23,8 +23,6 @@ With fg, bg, Fore, Back, Style, colored and cprint functions.
 
 # Getting started
 
-
-
 ## Installing
 
 To install the package you will need python2.7 or higher and pip installed.
@@ -52,9 +50,6 @@ print(f"{Fore.BLUE}{Back.YELLOW}Foreground of Blue Background of yellow.") # Pri
 ```
 
 For more please go to the [documentation](https://coloredterm.readthedocs.io/en/latest/).
-
-
-
 
 [contributors-shield]: https://img.shields.io/github/contributors/hostedposted/coloredterm.svg?style=for-the-badge
 [contributors-url]: https://github.com/hostedposted/coloredterm/graphs/contributors
