@@ -1,5 +1,4 @@
 """Collection of tools for changing the text of your terminal."""
-from __future__ import print_function
 import os, platform, secrets
 from PIL import ImageColor
 
@@ -286,7 +285,18 @@ names = {
 
 
 def HEX(color):
-    """Convert hex code to ansi escape code."""
+    """HEX Convert hex code to the closest ansi escape code.
+
+    Parameters
+    ----------
+    color : str
+        Hex color to convert to ansi.
+
+    Returns
+    -------
+    str
+        color parameter as ansi escape code.
+    """
     for ansicolor, hexcolor in colors.items():
         if hexcolor == color:
             return ansicolor
@@ -308,7 +318,22 @@ def HEX(color):
     return nearest
 
 def RGB(r, g, b):
-    """Convert rgb values to ansi escape code."""
+    """RGB Convert r, g and b values to ansi escape code.
+
+    Parameters
+    ----------
+    r : int
+        r value of RGB
+    g : int
+        g value of RGB
+    b : int
+        b value of RGB
+
+    Returns
+    -------
+    str
+        r, g and b parameters as ansi escape code.
+    """
     color = r, g, b
     for ansicolor, hexcolor in colors.items():
         if hexcolor == '#%02x%02x%02x' % color:
@@ -330,32 +355,65 @@ def RGB(r, g, b):
 
 
 def fg(color):
-    """Change foreground of terminal."""
+    """fg Change the foreground of your terminal.
+
+    Parameters
+    ----------
+    color : tuple, str, int
+        Color to print in terminal. tuple being RGB values, str being a HEX value and int being a ansi escape code.
+
+    Returns
+    -------
+    str
+        color parameter as terminal color. It will change the terminal text when printed.
+
+    Raises
+    ------
+    Exception
+        color parameter is not a tuple, str or int.
+    """
     if isinstance(color, tuple):
         color = RGB(color[0], color[1], color[2])
         return "\u001b[38;5;{0}m".format(color)
-    if isinstance(color, str):
+    elif isinstance(color, str):
         color = HEX(color)
         return "\u001b[38;5;{0}m".format(color)
-    if isinstance(color, int):
+    elif isinstance(color, int):
         return "\u001b[38;5;{0}m".format(color)
     else:
         raise Exception("Invalid color")
 
 def bg(color):
-    """Change background of terminal."""
+    """bg Change the background of your terminal.
+
+    Parameters
+    ----------
+    color : tuple, str, int
+        Color to print in terminal. tuple being RGB values, str being a HEX value and int being a ansi escape code.
+
+    Returns
+    -------
+    str
+        color parameter as terminal color. It will change the terminal background when printed.
+
+    Raises
+    ------
+    Exception
+        color parameter is not a tuple, str or int.
+    """
     if isinstance(color, tuple):
         color = RGB(color[0], color[1], color[2])
         return "\u001b[48;5;{0}m".format(color)
-    if isinstance(color, str):
+    elif isinstance(color, str):
         color = HEX(color)
         return "\u001b[48;5;{0}m".format(color)
-    if isinstance(color, int):
+    elif isinstance(color, int):
         return "\u001b[48;5;{0}m".format(color)
     else:
         raise Exception("Invalid color")
 
 class Style:
+    """Styles for the terminal."""
     BOLD = "\x1b[1m"
     DIM = "\x1b[2m"
     UNDERLINE = "\x1b[4m"
@@ -365,6 +423,7 @@ class Style:
     RESET = "\x1b[0m"
 
 class Fore:
+    """Foregrounds for the terminal."""
     BLACK = "\x1b[30m"
     RED = "\x1b[31m"
     GREEN = "\x1b[32m"
@@ -384,6 +443,7 @@ class Fore:
     RESET = "\x1b[0m"
 
 class Back:
+    """Backgrounds for the terminal."""
     BLACK = "\x1b[40m"
     RED = "\x1b[41m"
     GREEN = "\x1b[42m"
@@ -403,6 +463,24 @@ class Back:
     RESET = "\x1b[0m"
 
 def colored(text, color=None, on_color=None, style=None):
+    """colored Change the color of the terminal for one piece of text.
+
+    Parameters
+    ----------
+    text : str
+        text to be colored.
+    color : str, optional
+        color to change the text to, by default None
+    on_color : str, optional
+        color to change the background to, by default None
+    style : str, optional
+        style to change terminal style to, by default None
+
+    Returns
+    -------
+    str
+        your text with a text color/background color or style.
+    """
     if style == None:
         style = "RESET"
     else:
@@ -416,9 +494,35 @@ def colored(text, color=None, on_color=None, style=None):
     else:
         return str(eval("Style.{0}+Back.{1}+Fore.{2}".format(style, on_color.upper(), color.upper())))+str(text)+str(Style.RESET)
 def cprint(text, color=None, on_color=None, style=None, end=None):
+    """cprint colored function but it auto prints.
+
+    Parameters
+    ----------
+    text : str
+        text to be colored.
+    color : str, optional
+        color to change the text to, by default None
+    on_color : str, optional
+        color to change the background to, by default None
+    style : str, optional
+        style to change terminal style to, by default None
+    end : str, optional
+        what ends the print statement, by default None
+    """
     print(colored(text, color, on_color, style), end=end)
 
 def pattern_print(text, pattern=["reset"], end=None):
+    """pattern_print Print the next thing in a pattern of colors.
+
+    Parameters
+    ----------
+    text : str
+        text to print
+    pattern : list, optional
+        color pattern. saved every statement, by default ["reset"]
+    end : str, optional
+        what ends the print statement, by default None
+    """
     global next_in_pattern, pat
     try:
         if pattern == ["reset"]:
@@ -439,10 +543,34 @@ def pattern_print(text, pattern=["reset"], end=None):
     next_in_pattern += 1
 
 def pattern_input(text, pattern=["reset"]):
+    """pattern_input input the next thing in a pattern of colors.
+
+    Parameters
+    ----------
+    text : str
+        text to show in the input statement
+    pattern : list, optional
+        color pattern. saved every statement, by default ["reset"]
+
+    Returns
+    -------
+    str
+        Text entered.
+    """
     pattern_print(text, pattern, end="")
     return input()
 
 def rand(text):
-    """Randomly pick a color and make your text that color."""
-    return colored(text, secrets.choice(list(names.values())))
+    """rand Randomly pick a color and make your text that color.
 
+    Parameters
+    ----------
+    text : str
+        text to have a random color.
+
+    Returns
+    -------
+    str
+        text parameter as random terminal color
+    """
+    return colored(text, secrets.choice(list(names.values())))
