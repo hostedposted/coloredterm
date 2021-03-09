@@ -1,3 +1,4 @@
+"""Collection of tools for changing the text of your terminal."""
 from coloredterm.coloredterm import (
     Back,
     bg,
@@ -13,7 +14,7 @@ from coloredterm.coloredterm import (
     Style
 )
 
-__version__ = "0.1.8"
+__version__ = "0.1.9"
 __all__ = [
     'Back',
     'bg',
