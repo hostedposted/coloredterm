@@ -3,5 +3,4 @@ site_name: Colored Term
 nav:
     - Home: index.md
     - Install: install.md
-    - Call Reference: call reference.md
     - Cookbook: cookbook.md

@@ -19,7 +19,7 @@ With fg, bg, Fore, Back, Style, colored and cprint functions.
 
 ## Installing
 
-To install the package you will need python2.7 or higher and pip installed.
+To install the package you will need python3.6 or higher and pip installed.
 
 With those installed you can start.
 
