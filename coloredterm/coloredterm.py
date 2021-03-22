@@ -521,7 +521,7 @@ def cprint(text, color=None, on_color=None, style=None, end=None):
     print(colored(text, color, on_color, style), end=end)
 
 class Pattern_Print:
-    def pattern_print(self, text: str, pattern=["reset"], end=None):
+    def pattern_print(self, text: str, pattern: list = None, end=None):
         """
         Print text in a pattern of colors
 
@@ -530,12 +530,13 @@ class Pattern_Print:
         text : str
             Text to be printed
         pattern : list, optional
-            Pattern to follow, by default ["reset"]
+            Pattern to follow, by default None
         end : str, optional
             What to print at the end, by default None
         """
         try:
-            if pattern == ["reset"]:
+            if pattern is None:
+                pattern = ["reset"]
                 pattern = self.pat
             if pattern != self.pat:
                 self.pat = pattern
@@ -554,7 +555,7 @@ class Pattern_Print:
 
 pattern_print = Pattern_Print().pattern_print
 
-def pattern_input(text, pattern=["reset"]):
+def pattern_input(text, pattern=None):
     """
     input the next thing in a pattern of colors.
 
