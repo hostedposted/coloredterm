@@ -21,6 +21,6 @@ setuptools.setup(
         "Operating System :: OS Independent",
         "License :: OSI Approved :: MIT License"
     ],
-    install_requires=['Pillow<=8.1.2'],
+    install_requires=['Pillow<8.2.1'],
     python_requires='>=3.6',
 )
